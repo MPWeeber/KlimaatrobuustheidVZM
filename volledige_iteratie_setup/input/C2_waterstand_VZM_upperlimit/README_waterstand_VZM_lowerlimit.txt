@@ -1,0 +1,1 @@
+Waterstand regulatie aangegeven voor laagste stand als vaste waarde op -10 cm NAP

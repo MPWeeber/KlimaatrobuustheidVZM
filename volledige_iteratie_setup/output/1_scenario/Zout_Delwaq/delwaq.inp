@@ -1,0 +1,319 @@
+999 80 ';'
+;DELWAQ_VERSION_4.910                        		; Delwaq version number
+;PRINT_OUTPUT_OPTION_4                       		; Debug level
+
+; TEMPLATE FILE FOR WATER QUALITY CALCULATION
+; First input block
+'Bakjesmodel Volkerak-Zoommeer Chloride'
+' '
+' '
+'T0: 2018.01.01 00:00:00  (scu=       1s)'
+
+2 0
+1 Continuity
+2 Chloride
+
+#1;
+
+;###############################################################################
+; Second input block
+  86400 'DDHHMMSS' 'DDHHMMSS'  ; system clock
+
+
+    15.03                      ; integration option / BALANCES
+   NODISP-AT-BOUND
+   BAL_NOLUMPPROCESSES
+   BAL_NOLUMPLOADS
+   BAL_NOLUMPTRANSPORT
+   BAL_NOSUPPRESSSPACE
+   BAL_NOSUPPRESSTIME
+
+2018/01/01-00:00:00    ; start year
+2020/01/01-00:00:00    ; end year
+
+  0 ; timestep constant
+; dddhhmmss format for timestep
+  001000000 ; timestep
+
+ 1                                                 	; Monitoring areas in this file
+ 11        ; stations
+ 'I. Krammer-Volkerak Oost'                      1 1
+ 'II. Krammer-Volkerak Midden'                   1 2
+ 'III. Krammer-Volkerak Ingang Eendracht'        1 3
+ 'IV. Krammer-Volkerak West '                    1 4
+ 'V. Eendracht Noord'                            1 5
+ 'VI. Eendracht Zuid'                            1 6
+ 'VII. Zoommeer'                                 1 7
+ 'VIII. Zoommeer Zuid'                           1 8
+ 'IX. Bathse Spuikanaal'                         1 9
+ 'X. Voorhaven Kramersluizen'                    1 10
+ 'Volkerak-Zoommeer'                             10  1 2 3 4 5 6 7 8 9 10
+
+
+ 2                                                 	; No monitoring cross areas
+
+ 2018/01/01-00:00:00  2020/01/01-00:00:00    7000000       ; mon/bal year   
+ 2018/01/01-00:00:00  2020/01/01-00:00:00  364000000       ; map     year   
+ 2018/01/01-00:00:00  2020/01/01-00:00:00    1000000       ; his     year   
+
+
+#2;
+;###############################################################################
+; Third input block
+10 		; nr of segments
+
+
+ 2                                           		; Structure matrix not used
+; features
+0
+0
+ 
+; Volumes 
+-1     ; from external text file (no INCLUDE needed)
+'..\input_delwaq\volumes.dat'
+
+#3;
+;###############################################################################
+; Fourth input block
+38  0  0		; nr of exchanges in three directions
+         0                     ; additional dispersions
+         0                     ; additional velocities
+         
+ 1                                           		; Input format of the pointers
+ 1                                           		; Pointers follow here         
+  1 2 0 0  ; I. --> II.
+  2 3 0 0  ; II. --> III.
+  3 5 0 0  ; III. --> V. 
+  4 3 0 0  ; IV. --> III.   Let op: Richting omgedraaid
+  5 6 0 0  ; V. --> VI.
+  6 7 0 0  ; VI. --> VII.
+  7 8 0 0  ; VII. --> VIII.
+  8 9 0 0  ; VIII. --> IX.  
+  4 10 0 0 ; IV. --> X. 
+ ; 
+  -1 1 0 0 ; Volkeraksluizen instroom
+  -2 1 0 0 ; Dintel instroom
+  -3 2 0 0 ; Vliet instroom
+  10 -4 0 0 ; Krammersluizen uitstroom
+  7 -5 0 0 ; Bergse diepsluis uitstroom
+  8 -6 0 0 ; Kreekraksluizen uitstroom
+  9 -7 0 0 ; Bathse spuisluis uitstroom
+  2 -8 0 0 ; Watervraag Hollands Delta uitstroom
+  5 -9 0 0 ; 50% Watervraag Scheldestromen uitstroom
+  6 -10 0 0 ; 50% Watervraag Scheldestromen uitstroom
+  7 -11 0 0 ; Watervraag Brabantse Delta
+ ;
+  -12 1 0 0 ; Neerslag  I. Krammer-Volkerak Oost 
+  -13 2 0 0 ; Neerslag  II. Krammer-Volkerak Midden
+  -14 3 0 0 ; Neerslag  III. Krammer-Volkerak Ingang Eendracht     
+  -15 4 0 0 ; Neerslag  IV. Krammer-Volkerak West
+  -16 5 0 0 ; Neerslag  V. Eendracht Noord
+  -17 6 0 0 ; Neerslag  VI. Eendracht Zuid
+  -18 7 0 0 ; Neerslag  VII. Zoommeer
+  -19 8 0 0 ; Neerslag  VIII. Zoommeer Zuid
+  -20 9 0 0 ; Neerslag  IX. Bathse Spuikanaal
+;
+  1 -21 0 0 ; Verdamping  I. Krammer-Volkerak Oost 
+  2 -22 0 0 ; Verdamping  II. Krammer-Volkerak Midden
+  3 -23 0 0 ; Verdamping  III. Krammer-Volkerak Ingang Eendracht     
+  4 -24 0 0 ; Verdamping  IV. Krammer-Volkerak West
+  5 -25 0 0 ; Verdamping  V. Eendracht Noord
+  6 -26 0 0 ; Verdamping  VI. Eendracht Zuid
+  7 -27 0 0 ; Verdamping  VII. Zoommeer
+  8 -28 0 0 ; Verdamping  VIII. Zoommeer Zuid
+  9 -29 0 0 ; Verdamping  IX. Bathse Spuikanaal
+; 
+     1                 					; dispersions in this file
+     1.0 1.0 1.0       					; scale factors for 3 directions
+     INCLUDE 'dispersie_50constant.inc'
+; 
+
+	  ; Area
+	 1       ; Information follows in this file
+	 2       ; Constant values
+	 1.0     ; Scale factor
+	 1.0     ; Default value - not used in this case because all are overriden
+	 9       ; number of overridings
+         1  7500.0   ; I. --> II.
+         2  12500.0  ; II. --> III.
+         3  1500.0   ; III. --> V. 
+         4  12500.0  ; IV. --> III.  
+         5  1500.0   ; V. --> VI.
+         6  5000.0   ; VI. --> VII.
+         7  2800.0   ; VII. --> VIII.
+         8  500.0    ; VIII. --> IX. 
+         9  1540.0   ; IV. --> X. 
+
+	  ; Flow
+1        ; specicified in an external text (no INCLUDE needed)
+INCLUDE '..\input_delwaq\flows.dat'				            ; NOQ1
+INCLUDE '..\input_delwaq\flows_kunstwerken.dat'				; NOQ2
+INCLUDE '..\input_delwaq\flows_neerslag.dat'				; NOQ3
+INCLUDE '..\input_delwaq\flows_verdamping.dat'				; NOQ4
+
+	 1 ; constant lengths supplied
+	  ; Length
+	 1                 ; Information follows in this file
+	 2                 ; Constant values
+	 1.0               ; Scale factor
+	 1.0   1.0   ; Default value - not used in this case because all are overriden
+	 9                 ; number of overridings
+         1  1000.0 1000.0   ; I. --> II.
+         2  1000.0 1000.0   ; II. --> III.
+         3  5000.0 5000.0   ; III. --> V. 
+         4  1000.0 1000.0   ; IV. --> III.  
+         5  2000.0 2000.0   ; V. --> VI.      
+         6  5000.0 5000.0   ; VI. --> VII.
+         7  1000.0 1000.0   ; VII. --> VIII.
+         8  2000.0 2000.0   ; VIII. --> IX. 
+         9  1000.0 1000.0   ; IV. --> X. 
+
+#4;
+;###############################################################################
+; Fifth input block, water quality calculation
+
+; Boundary list
+; 29 boundaries
+
+ 'Volkeraksluizen' ' ' 'Volkeraksluizen'
+ 'Dintel' ' ' 'Dintel'
+ 'Vliet' ' ' 'Vliet' 
+ 'Krammersluizen' ' ' 'Uitstroom'
+ 'Bergse diepsluis' ' ' 'Uitstroom'
+ 'Kreekraksluizen' ' ' 'Uitstroom'
+ 'Bathse spuisluis' ' ' 'Uitstroom'
+ 'Watervraag Hollands Delta' ' ' 'Uitstroom'
+ 'V. 50% Watervraag Scheldestromen' ' ' 'Uitstroom'
+ 'VII. 50% Watervraag Scheldestromen' ' ' 'Uitstroom'
+ 'Watervraag Brabantse Delta' ' ' 'Uitstroom'
+ 'Neerslag I.' ' ' 'Neerslag'
+ 'Neerslag II.' ' ' 'Neerslag'
+ 'Neerslag III.' ' ' 'Neerslag'
+ 'Neerslag IV.' ' ' 'Neerslag'
+ 'Neerslag V.' ' ' 'Neerslag'
+ 'Neerslag VI.' ' ' 'Neerslag'
+ 'Neerslag VII.' ' ' 'Neerslag'
+ 'Neerslag VIII.' ' ' 'Neerslag'
+ 'Neerslag IX.' ' ' 'Neerslag'
+ 'Verdamping I.' ' ' 'Dummy'
+ 'Verdamping II.' ' ' 'Dummy'
+ 'Verdamping III.' ' ' 'Dummy'
+ 'Verdamping IV.' ' ' 'Dummy'
+ 'Verdamping V.' ' ' 'Dummy'
+ 'Verdamping VI.' ' ' 'Dummy'
+ 'Verdamping VII.' ' ' 'Dummy'
+ 'Verdamping VIII.' ' ' 'Dummy'
+ 'Verdamping IX.' ' ' 'Dummy'
+
+ 0                     					; no Tatcher-Harleman time lags
+ 
+ ;Boundary data (dummy value)
+ ITEM 'Volkeraksluizen'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Volkeraksluizen'     CONCENTRATIONS Chloride     DATA 100.0
+
+ ITEM 'Dintel'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Dintel'     CONCENTRATIONS Chloride     DATA 80.0
+ ITEM 'Vliet'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Vliet'     CONCENTRATIONS Chloride     DATA 80.0
+
+ ITEM 'Uitstroom'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Uitstroom'     CONCENTRATIONS Chloride     DATA 0.0
+
+ ITEM 'Neerslag'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Neerslag'     CONCENTRATIONS Chloride     DATA 5.0
+
+ ITEM 'Dummy'     CONCENTRATIONS Continuity   DATA 1.
+ ITEM 'Dummy'     CONCENTRATIONS Chloride     DATA 1.E-20
+ 
+
+#5;
+;###############################################################################
+; Sixth input block, Dry Waste Loads block
+; Number of loads 
+
+8    ; number of loads
+;
+10 'Zoutvracht Krammersluizen' 'Zoutvracht Krammersluizen' 'Zoutvracht Krammersluizen'
+7 'Zoutvracht Bergse diepsluis' 'Zoutvracht Bergse diepsluis' 'Zoutvracht Bergse diepsluis'
+9 'Zoutvracht Bathse spuisluis' 'Zoutvracht Bathse spuisluis' 'Zoutvracht Bathse spuisluis'
+4 'Kwel Krammer-Volkerak West' 'Krammer-Volkerak West' 'Krammer-Volkerak West'
+5 'Kwel Eendracht Noord' 'Kwel Eendracht Noord' 'Kwel Eendracht Noord'
+6 'Kwel Eendracht Zuid' 'Kwel Eendracht Zuid' 'Kwel Eendracht Zuid'
+7 'Kwel Zoommeer' 'Kwel Zoommeer' 'Kwel Zoommeer'
+8 'Kwel Zoommeer Zuid' 'Kwel Zoommeer Zuid' 'Kwel Zoommeer Zuid'
+
+ITEM
+   'Zoutvracht Krammersluizen'
+CONCENTRATION
+   Chloride
+TIME BLOCK
+DATA
+INCLUDE '..\input_delwaq\Zoutvracht_Krammersluizen_IDxxx.inc'
+
+ITEM
+   'Zoutvracht Bergse diepsluis'
+CONCENTRATION
+   Chloride
+TIME BLOCK
+DATA
+INCLUDE '..\input_delwaq\Zoutvracht_Bergse_diepsluis_IDxxx.inc'
+
+ITEM
+   'Zoutvracht Bathse spuisluis'
+CONCENTRATION
+   Chloride
+TIME BLOCK
+DATA
+INCLUDE '..\input_delwaq\Zoutvracht_Bathse_spuisluis_IDxxx.inc'
+
+ITEM
+   'Kwel Krammer-Volkerak West'
+   'Kwel Eendracht Noord' 
+   'Kwel Eendracht Zuid'
+   'Kwel Zoommeer'
+   'Kwel Zoommeer Zuid'
+CONCENTRATION
+   Chloride
+TIME BLOCK
+DATA
+INCLUDE '..\input_delwaq\Zoutvracht_Kwel_IDxxx.inc'
+
+
+#6;
+;###############################################################################
+; Seventh input block
+
+CONSTANTS  'Nothreads' DATA  0                 ; Multicore 3 processors
+CONSTANTS  'ONLY_ACTIVE' DATA  0
+
+PARAMETERS Surf ALL DATA 1 2 3 4 5 6 7 8 9 10
+
+
+#7
+;###############################################################################
+; Eighth input block
+
+INITIALS  Continuity Chloride DEFAULTS 1.0  125.0    
+
+ 
+#8
+;###############################################################################
+; Ninth input block
+ 1                                           		; Conditions follow in this file
+ 1                                           		; Monitor-file
+ 0                                           		; Grid-file
+ 1                                                  ; His
+
+ 1                                                      ; Map
+                                             		; Binary/Nefis and History/Map
+ 1                                           		; switch on  binary History file
+ 0                                           		; switch on  binary Map     file
+ 0                                           		; switch off Nefis  History file
+ 0                                           		; switch off Nefis  Map     file
+#9
+;###############################################################################
+; Tenth input block
+
+
+
+#10

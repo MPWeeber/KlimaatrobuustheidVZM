@@ -1,0 +1,87 @@
+---log for iteration scenarios---
+
+- Structure and number of files
+   /10_bathse_spuisluis
+        /1_standaard_beheer.csv
+   /1_volkeraksluizen
+        /1_continue_15m3s.csv
+        /3_continue_25m3s.csv
+        /4_continue_25m3s_winterdoorspoeling.csv
+        /5_continue_40m3s.csv
+   /2_neerslag
+        /1_KNMI_neerslag_geen_scenario.csv
+        /2_KNMI_neerslag_vlak_2050.csv
+        /3_KNMI_neerslag_extreem_2085.csv
+        /4_KNMI_neerslag_geen_scenario_2017.csv
+        /5_KNMI_neerslag_vlak_2050_2017.csv
+        /6_KNMI_neerslag_extreem_2085_2017.csv
+        /7_KNMI_neerslag_geen_scenario_2018.csv
+        /8_KNMI_neerslag_vlak_2050_2018.csv
+        /9_KNMI_neerslag_extreem_2085_2018.csv
+   /3_krammersluizen
+        /10_operatie_krammersluizen_met_zss_90cm.csv
+        /11_operatie_krammersluizen_met_zss_100cm.csv
+        /1_operatie_krammersluizen_met_zss_0cm.csv
+        /2_operatie_krammersluizen_met_zss_10cm.csv
+        /3_operatie_krammersluizen_met_zss_20cm.csv
+        /4_operatie_krammersluizen_met_zss_30cm.csv
+        /5_operatie_krammersluizen_met_zss_40cm.csv
+        /6_operatie_krammersluizen_met_zss_50cm.csv
+        /7_operatie_krammersluizen_met_zss_60cm.csv
+        /8_operatie_krammersluizen_met_zss_70cm.csv
+        /9_operatie_krammersluizen_met_zss_80cm.csv
+   /4_bergsediepsluis
+        /1_standaard_operatie_bergsediepsluis.csv
+   /5_kreekraksluis
+        /1_standaard_operatie_kreekraksluis.csv
+   /6_verdamping
+        /1_verdamping_wilhelminadorp2003.csv
+        /2_verdamping_GilzeRijen2018.csv
+   /7_kwel
+        /1_standaard_kwel_3kgs.csv
+        /2_scenario_kwel_6kgs.csv
+   /8a_watervraag_hollandse_delta
+        /1_10proc_zomer_watervraag_hollandse_delta.csv
+   /8b_watervraag_schelde_stromen
+        /1_10proc_zomer_watervraag_schelde_stromen.csv
+   /8c_watervraag_brabantse_delta
+        /1_10proc_zomer_watervraag_brabantse_delta.csv
+   /9a_Dintel
+        /1_afvoer_2017_Dintelsas.csv
+        /2_afvoer_2017_Dintelsas_2050_RV.csv
+        /3_afvoer_2017_Dintelsas_2085_RV.csv
+        /4_afvoer_2018_Dintelsas.csv
+        /5_afvoer_2018_Dintelsas_2050_RV.csv
+        /6_afvoer_2018_Dintelsas_2085_RV.csv
+   /9b_Steenbergse_Vliet
+        /1_afvoer_2017_Benedensas.csv
+        /2_afvoer_2017_Benedensas_2050.csv
+        /3_afvoer_2017_Benedensas_2085.csv
+        /4_afvoer_2018_Benedensas.csv
+        /5_afvoer_2018_Benedensas_2050.csv
+        /6_afvoer_2018_Benedensas_2085.csv
+   /A_zeespiegelstijging
+        /10_waterstand_bath_2003_plus_90_cm.csv
+        /11_waterstand_bath_2003_plus_100_cm.csv
+        /1_waterstand_bath_2003.csv
+        /2_waterstand_bath_2003_plus_10_cm.csv
+        /3_waterstand_bath_2003_plus_20_cm.csv
+        /4_waterstand_bath_2003_plus_30_cm.csv
+        /5_waterstand_bath_2003_plus_40_cm.csv
+        /6_waterstand_bath_2003_plus_50_cm.csv
+        /7_waterstand_bath_2003_plus_60_cm.csv
+        /8_waterstand_bath_2003_plus_70_cm.csv
+        /9_waterstand_bath_2003_plus_80_cm.csv
+   /B_inlaatstop_volkeraksluizen
+        /1_inlaat_continue.csv
+        /2_inlaatstop_volkeraksluizen.csv
+   /C1_waterstand_VZM_lowerlimit
+        /1_continue_min10cmNAP.csv
+        /2_peiltrap_gemiddeld.csv
+   /C2_waterstand_VZM_upperlimit
+        /1_continue_plus15cmNAP.csv
+
+ - Total scenarios
+Scenarios : 1408
+
+END LOG
