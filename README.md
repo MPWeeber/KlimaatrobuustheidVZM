@@ -1,5 +1,6 @@
 # Bakjesmodel "Klimaatrobuustheid van het waterbeheer van het Volkerak-Zoommeer
 (in Dutch, part of code and environment README in English)
+
 Het bakjesmodel opzet die te vinden is onder de folder "volledige_iteratie_setup" is gebruik in de studie naar de Klimaatrobuustheid van het Volkerak-Zoommeer (Nolte et al. 2020).
 Hiermee zijn de effecten van zeespiegel stijging, verandering van luchttemperatuur en neerslag en rivierafvoer op de waterkwantiteit en zoutgehalte van het Volkerak-Zoommeer onderzocht. Hierbij is ook gekeken naar de functies die het Volkerak-Zoommeer vervult. Meer informatie vindt u in de folder "rapport".
 
